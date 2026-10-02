@@ -1,0 +1,463 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f7f6f1">
+  <meta name="description" content="Dental Lux — стоматология в Актобе. Услуги, цены и запись на приём в WhatsApp.">
+  <title>Dental Lux — стоматология в Актобе</title>
+  <style>
+    :root {
+      --paper: #f7f6f1;
+      --white: #fffefa;
+      --ink: #20332f;
+      --muted: #737d75;
+      --green: #1f5146;
+      --green-dark: #173e36;
+      --sage: #dce8dd;
+      --gold: #c99b61;
+      --line: #e8e8df;
+      --serif: Georgia, "Times New Roman", serif;
+      --sans: "Segoe UI", Arial, sans-serif;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; scroll-padding-top: 92px; }
+    body { margin: 0; background: var(--paper); color: var(--ink); font-family: var(--sans); -webkit-font-smoothing: antialiased; }
+    a { color: inherit; text-decoration: none; }
+    button, input, select, textarea { font: inherit; }
+    button, a { -webkit-tap-highlight-color: transparent; }
+    .wrap { width: min(1160px, calc(100% - 48px)); margin-inline: auto; }
+    .eyebrow { display: inline-flex; align-items: center; gap: 9px; color: var(--green); font-size: 11px; font-weight: 700; letter-spacing: .18em; text-transform: uppercase; }
+    .eyebrow::before { content: ""; width: 22px; height: 1px; background: var(--gold); }
+    .section { padding: 104px 0; }
+    .section-head { max-width: 600px; margin-bottom: 42px; }
+    .section-head h2 { margin: 14px 0 12px; font: 400 clamp(36px, 4.5vw, 56px)/1.06 var(--serif); letter-spacing: -.035em; }
+    .section-head p { color: var(--muted); font-size: 15px; line-height: 1.7; margin: 0; }
+    .btn { min-height: 52px; display: inline-flex; align-items: center; justify-content: center; gap: 10px; border: 1px solid transparent; border-radius: 4px; padding: 0 22px; font-size: 13px; font-weight: 650; transition: transform .2s ease, background .2s ease, border-color .2s ease; cursor: pointer; }
+    .btn:hover { transform: translateY(-2px); }
+    .btn-primary { background: var(--green); color: #fff; }
+    .btn-primary:hover { background: var(--green-dark); }
+    .btn-light { background: transparent; color: var(--ink); border-color: #ccd3ca; }
+    .btn-light:hover { border-color: var(--green); background: rgba(255,255,255,.48); }
+    .btn svg { width: 16px; height: 16px; }
+    .topline { background: var(--green-dark); color: #eef4ec; font-size: 11px; letter-spacing: .04em; }
+    .topline .wrap { min-height: 34px; display: flex; align-items: center; justify-content: space-between; gap: 16px; }
+    .topline a { opacity: .9; }
+    .topline a:hover { opacity: 1; text-decoration: underline; }
+    header { position: sticky; top: 0; z-index: 20; background: rgba(247,246,241,.94); backdrop-filter: blur(12px); border-bottom: 1px solid rgba(32,51,47,.08); }
+    .nav { min-height: 76px; display: flex; align-items: center; justify-content: space-between; gap: 32px; }
+    .brand { display: inline-flex; align-items: center; gap: 11px; flex: 0 0 auto; }
+    .brand-mark { width: 38px; height: 38px; display: grid; place-items: center; color: var(--green); border: 1px solid #c5d2c6; border-radius: 50%; }
+    .brand-mark svg { width: 21px; height: 21px; }
+    .brand-name { font: 600 18px/1 var(--serif); letter-spacing: .03em; }
+    .brand-sub { color: var(--muted); font-size: 9px; letter-spacing: .17em; margin-top: 5px; text-transform: uppercase; }
+    .nav-links { display: flex; align-items: center; gap: clamp(18px, 3vw, 38px); margin-left: auto; }
+    .nav-links a { color: #52615a; font-size: 12px; transition: color .2s ease; }
+    .nav-links a:hover { color: var(--green); }
+    .nav-phone { color: var(--green); font-size: 13px; font-weight: 650; white-space: nowrap; }
+    .nav .btn { min-height: 43px; padding-inline: 17px; font-size: 12px; }
+    .menu-toggle { display: none; width: 43px; height: 43px; border: 1px solid var(--line); background: transparent; color: var(--green); border-radius: 4px; cursor: pointer; }
+    .menu-toggle svg { width: 21px; height: 21px; }
+
+    .hero { padding: 54px 0 82px; overflow: hidden; }
+    .hero-grid { min-height: 548px; display: grid; grid-template-columns: 1fr .92fr; align-items: center; gap: clamp(40px, 8vw, 110px); }
+    .hero-copy { padding: 24px 0 40px; }
+    .hero h1 { max-width: 590px; margin: 19px 0 22px; font: 400 clamp(49px, 6vw, 76px)/.99 var(--serif); letter-spacing: -.045em; }
+    .hero h1 em { color: var(--green); font-weight: 400; }
+    .hero-lead { max-width: 440px; margin: 0; color: var(--muted); font-size: 15px; line-height: 1.75; }
+    .hero-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 30px; }
+    .hero-meta { display: flex; align-items: center; gap: 18px; margin-top: 40px; color: #69766f; font-size: 11px; }
+    .meta-dot { width: 4px; height: 4px; border-radius: 50%; background: var(--gold); }
+    .hero-visual { min-height: 500px; position: relative; display: grid; place-items: center; }
+    .photo-placeholder { position: relative; width: min(100%, 470px); aspect-ratio: .89; overflow: hidden; border-radius: 48% 48% 8px 8px; background: linear-gradient(155deg, #e7e9dd 0%, #c6d5c8 53%, #95afa1 100%); box-shadow: 0 30px 70px rgba(32,51,47,.13); }
+    .photo-placeholder::before { content: ""; position: absolute; width: 75%; height: 75%; left: -18%; top: -10%; border: 1px solid rgba(255,255,255,.5); border-radius: 50%; }
+    .photo-placeholder::after { content: ""; position: absolute; width: 64%; height: 64%; right: -22%; bottom: -14%; border: 1px solid rgba(255,255,255,.42); border-radius: 50%; }
+    .arch { position: absolute; inset: 8% 10% 0; z-index: 1; border: 1px solid rgba(255,255,255,.65); border-bottom: 0; border-radius: 48% 48% 0 0; pointer-events: none; }
+    .hero-tooth { position: absolute; z-index: 2; width: 56%; max-width: 245px; left: 22%; top: 16%; filter: drop-shadow(0 18px 30px rgba(32,51,47,.11)); }
+    .float-card { position: absolute; right: -26px; top: 17%; display: flex; align-items: center; gap: 12px; padding: 15px 18px; background: var(--white); box-shadow: 0 15px 38px rgba(32,51,47,.11); border-radius: 5px; z-index: 3; }
+    .float-icon { width: 35px; height: 35px; display: grid; place-items: center; background: var(--sage); color: var(--green); border-radius: 50%; }
+    .float-icon svg { width: 17px; height: 17px; }
+    .float-card strong { display: block; font: 400 17px/1.1 var(--serif); }
+    .float-card span { display: block; margin-top: 4px; color: var(--muted); font-size: 10px; }
+    .hero-index { position: absolute; left: 1%; bottom: 14%; writing-mode: vertical-rl; transform: rotate(180deg); color: #89968d; font-size: 10px; letter-spacing: .2em; }
+    .trust { border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); background: rgba(255,254,250,.52); }
+    .trust-grid { min-height: 110px; display: grid; grid-template-columns: repeat(3, 1fr); align-items: center; }
+    .trust-item { min-height: 54px; display: flex; align-items: center; gap: 14px; padding-left: 8%; border-right: 1px solid var(--line); }
+    .trust-item:first-child { padding-left: 0; }
+    .trust-item:last-child { border-right: 0; }
+    .trust-item svg { width: 23px; height: 23px; color: var(--green); flex: 0 0 auto; }
+    .trust-item strong { display: block; font: 400 18px/1.1 var(--serif); }
+    .trust-item span { display: block; color: var(--muted); margin-top: 5px; font-size: 11px; }
+
+    .instagram-section { background: var(--paper); }
+    .instagram-heading { display: flex; align-items: end; justify-content: space-between; gap: 28px; margin-bottom: 34px; }
+    .instagram-heading .section-head { margin: 0; }
+    .instagram-heading .btn { flex: 0 0 auto; }
+    .instagram-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 18px; align-items: start; }
+    .instagram-card { display: block; position: relative; min-width: 0; overflow: hidden; border: 1px solid var(--line); border-radius: 4px; background: white; }
+    .instagram-card::after { content: ""; position: absolute; inset: 45% 0 0; background: linear-gradient(0deg, rgba(19,48,40,.76), transparent); pointer-events: none; }
+    .instagram-card img { display: block; width: 100%; aspect-ratio: 1; object-fit: cover; object-position: center 35%; transition: transform .4s ease; }
+    .instagram-card:hover img { transform: scale(1.035); }
+    .instagram-caption { position: absolute; z-index: 1; right: 0; bottom: 0; left: 0; display: flex; align-items: end; justify-content: space-between; gap: 12px; padding: 20px 15px 14px; color: white; }
+    .instagram-caption strong { font: 400 17px/1.1 var(--serif); }
+    .instagram-caption span { color: rgba(255,255,255,.83); font-size: 9px; white-space: nowrap; }
+    .instagram-link-row { margin-top: 24px; color: var(--muted); font-size: 12px; }
+    .instagram-link-row a { color: var(--green); font-weight: 700; }
+
+    .services-section { background: var(--white); }
+    .services-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
+    .service-card { min-height: 230px; display: flex; flex-direction: column; padding: 28px 28px 25px; border: 1px solid var(--line); transition: border-color .2s ease, transform .2s ease, box-shadow .2s ease; }
+    .service-card:hover { transform: translateY(-4px); border-color: #c6d5c7; box-shadow: 0 16px 30px rgba(32,51,47,.055); }
+    .service-icon { width: 42px; height: 42px; display: grid; place-items: center; color: var(--green); background: #edf2eb; border-radius: 50%; }
+    .service-icon svg { width: 20px; height: 20px; }
+    .service-card h3 { margin: 22px 0 8px; font: 400 23px/1.1 var(--serif); }
+    .service-card p { max-width: 300px; margin: 0; color: var(--muted); font-size: 12px; line-height: 1.65; }
+    .service-link { display: inline-flex; align-items: center; gap: 7px; width: fit-content; margin-top: auto; padding-top: 20px; color: var(--green); font-size: 11px; font-weight: 700; }
+    .service-link svg { width: 14px; height: 14px; transition: transform .2s ease; }
+    .service-link:hover svg { transform: translateX(3px); }
+
+    .price-section { background: var(--paper); }
+    .price-layout { display: grid; grid-template-columns: .85fr 1.15fr; gap: clamp(40px, 9vw, 120px); align-items: start; }
+    .price-layout .section-head { position: sticky; top: 125px; margin: 0; }
+    .price-note { margin-top: 25px; padding: 17px 18px; border-left: 2px solid var(--gold); background: rgba(255,254,250,.74); color: var(--muted); font-size: 11px; line-height: 1.7; }
+    .price-list { border-top: 1px solid #dcded4; }
+    .price-row { display: grid; grid-template-columns: 1fr auto; align-items: center; gap: 22px; min-height: 78px; border-bottom: 1px solid #dcded4; }
+    .price-item { display: grid; gap: 5px; }
+    .price-item small { color: #879188; font-size: 9px; letter-spacing: .12em; text-transform: uppercase; }
+    .price-row strong { font: 400 19px/1.2 var(--serif); }
+    .price-row span { color: var(--green); font-size: 12px; font-weight: 650; white-space: nowrap; }
+    .price-extra { margin-top: 25px; display: flex; align-items: center; justify-content: space-between; gap: 22px; }
+    .price-extra p { max-width: 260px; margin: 0; color: var(--muted); font-size: 11px; line-height: 1.6; }
+
+    .about-section { background: var(--green-dark); color: #f4f3e9; overflow: hidden; }
+    .about-grid { display: grid; grid-template-columns: .95fr 1.05fr; gap: 10%; align-items: center; }
+    .about-art { position: relative; min-height: 400px; display: grid; place-items: center; }
+    .about-orb { position: absolute; width: 330px; height: 330px; border: 1px solid rgba(224,233,218,.24); border-radius: 50%; }
+    .about-orb::before, .about-orb::after { content: ""; position: absolute; inset: 24px; border: 1px solid rgba(224,233,218,.18); border-radius: inherit; }
+    .about-orb::after { inset: 49px; }
+    .about-tooth { position: relative; width: 145px; color: #dce8dd; opacity: .94; }
+    .about-stamp { position: absolute; right: 0; bottom: 22px; display: flex; align-items: center; gap: 14px; padding: 18px 22px; background: #f7f6f1; color: var(--ink); }
+    .about-stamp strong { font: 400 29px/1 var(--serif); }
+    .about-stamp span { max-width: 95px; color: var(--muted); font-size: 10px; line-height: 1.4; }
+    .about-copy .eyebrow { color: #bfd4c2; }
+    .about-copy h2 { margin: 16px 0 18px; font: 400 clamp(38px, 4.5vw, 55px)/1.04 var(--serif); letter-spacing: -.03em; }
+    .about-copy > p { max-width: 470px; color: #c7d1c8; font-size: 14px; line-height: 1.8; }
+    .about-points { display: grid; grid-template-columns: 1fr 1fr; gap: 16px 24px; margin-top: 28px; }
+    .about-point { display: flex; gap: 10px; color: #e2e8dd; font-size: 11px; line-height: 1.55; }
+    .about-point svg { width: 15px; height: 15px; flex: 0 0 auto; color: #cfa76f; }
+
+    .booking-section { background: #eef1e9; }
+    .booking-grid { display: grid; grid-template-columns: .85fr 1.15fr; gap: clamp(40px, 9vw, 120px); align-items: start; }
+    .booking-copy h2 { margin: 15px 0; font: 400 clamp(38px, 4.5vw, 56px)/1.02 var(--serif); letter-spacing: -.035em; }
+    .booking-copy p { max-width: 360px; margin: 0; color: var(--muted); font-size: 14px; line-height: 1.75; }
+    .booking-steps { margin-top: 34px; display: grid; gap: 17px; }
+    .step { display: flex; align-items: center; gap: 13px; color: #50625a; font-size: 12px; }
+    .step-num { width: 29px; height: 29px; display: grid; place-items: center; border: 1px solid #c9d4c9; border-radius: 50%; color: var(--green); font: 13px var(--serif); }
+    .booking-form { padding: clamp(24px, 4vw, 42px); background: var(--white); box-shadow: 0 18px 50px rgba(32,51,47,.065); }
+    .form-title { margin: 0 0 24px; font: 400 25px/1.15 var(--serif); }
+    .fields { display: grid; grid-template-columns: 1fr 1fr; gap: 17px 15px; }
+    .field { display: grid; gap: 8px; }
+    .field.full { grid-column: 1 / -1; }
+    .field label { color: #68756d; font-size: 10px; font-weight: 650; letter-spacing: .04em; }
+    .field input, .field select, .field textarea { width: 100%; min-height: 46px; padding: 11px 12px; border: 1px solid #dfe3d9; border-radius: 3px; background: #fff; color: var(--ink); outline: none; font-size: 12px; }
+    .field textarea { min-height: 82px; resize: vertical; }
+    .field input:focus, .field select:focus, .field textarea:focus { border-color: #7d9c89; box-shadow: 0 0 0 3px rgba(31,81,70,.08); }
+    .form-submit { width: 100%; margin-top: 20px; }
+    .form-hint { margin: 12px 0 0; text-align: center; color: #889188; font-size: 10px; line-height: 1.5; }
+
+    .contact-section { background: var(--white); }
+    .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(40px, 8vw, 100px); align-items: center; }
+    .contact-copy h2 { margin: 14px 0 28px; font: 400 clamp(38px, 4.5vw, 55px)/1.04 var(--serif); letter-spacing: -.035em; }
+    .contact-list { display: grid; gap: 23px; }
+    .contact-item { display: grid; grid-template-columns: 28px 1fr; gap: 13px; }
+    .contact-item svg { width: 20px; height: 20px; color: var(--green); margin-top: 2px; }
+    .contact-item span { display: block; color: #8a948d; font-size: 10px; text-transform: uppercase; letter-spacing: .13em; }
+    .contact-item strong, .contact-item a { display: block; margin-top: 7px; font: 400 19px/1.25 var(--serif); }
+    .contact-item a:hover { color: var(--green); }
+    .contact-actions { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 29px; }
+    .map-card { min-height: 386px; position: relative; display: grid; place-items: center; overflow: hidden; background: #e9eee6; border-radius: 4px; }
+    .map-lines { position: absolute; inset: -30%; opacity: .6; background-image: linear-gradient(30deg, transparent 47%, #c7d2c6 47.3%, #c7d2c6 47.8%, transparent 48.1%), linear-gradient(145deg, transparent 44%, #c7d2c6 44.3%, #c7d2c6 44.8%, transparent 45.1%), linear-gradient(90deg, transparent 48%, rgba(255,255,255,.8) 48.2%, rgba(255,255,255,.8) 50%, transparent 50.2%), linear-gradient(0deg, transparent 58%, rgba(255,255,255,.72) 58.3%, rgba(255,255,255,.72) 59.1%, transparent 59.4%); background-size: 190px 150px, 220px 180px, 175px 190px, 220px 170px; transform: rotate(-9deg); }
+    .map-block { position: absolute; width: 28%; height: 22%; background: rgba(255,254,250,.58); border: 1px solid rgba(195,207,195,.55); transform: rotate(-9deg); }
+    .map-block.one { left: 9%; top: 18%; }
+    .map-block.two { right: 8%; top: 13%; width: 34%; height: 29%; }
+    .map-block.three { left: 21%; bottom: 11%; width: 36%; height: 25%; }
+    .map-pin { position: relative; z-index: 1; width: 62px; height: 62px; display: grid; place-items: center; border: 7px solid rgba(255,255,255,.86); border-radius: 50%; background: var(--green); color: white; box-shadow: 0 10px 25px rgba(32,51,47,.22); }
+    .map-pin svg { width: 23px; height: 23px; }
+    .map-label { position: absolute; z-index: 2; left: 50%; top: calc(50% + 42px); transform: translateX(-50%); padding: 11px 15px; background: var(--white); box-shadow: 0 8px 20px rgba(32,51,47,.1); color: var(--ink); font: 400 16px var(--serif); white-space: nowrap; }
+    .map-label small { display: block; margin-top: 4px; color: var(--muted); text-align: center; font: 10px var(--sans); }
+    .map-open { position: absolute; bottom: 20px; right: 20px; z-index: 3; }
+    footer { background: #173e36; color: #e6ebe2; }
+    .footer-main { min-height: 112px; display: flex; align-items: center; justify-content: space-between; gap: 24px; }
+    .footer-brand .brand-mark { border-color: rgba(230,235,226,.3); color: #e6ebe2; }
+    .footer-brand .brand-sub { color: #b7c4b8; }
+    .footer-note { color: #b7c4b8; font-size: 11px; }
+    .footer-bottom { padding: 16px 0 20px; border-top: 1px solid rgba(230,235,226,.16); display: flex; justify-content: space-between; gap: 20px; color: #aab9ac; font-size: 10px; }
+    .footer-bottom a:hover { color: white; }
+    .reveal { animation: rise .7s both; }
+    @keyframes rise { from { opacity: 0; transform: translateY(13px); } to { opacity: 1; transform: translateY(0); } }
+
+    @media (max-width: 940px) {
+      .nav-links { gap: 17px; }
+      .nav-phone { display: none; }
+      .hero-grid { gap: 38px; }
+      .float-card { right: -6px; }
+      .price-layout, .booking-grid { gap: 45px; }
+      .about-grid { gap: 6%; }
+    }
+    @media (max-width: 760px) {
+      .wrap { width: min(100% - 36px, 560px); }
+      .topline .wrap { min-height: 32px; justify-content: center; font-size: 10px; }
+      .topline .topline-link { display: none; }
+      .nav { min-height: 67px; }
+      .nav .btn { display: none; }
+      .menu-toggle { display: grid; place-items: center; }
+      .nav-links { display: none; position: absolute; top: 66px; left: 0; right: 0; padding: 14px 22px 20px; background: var(--paper); border-bottom: 1px solid var(--line); box-shadow: 0 14px 25px rgba(32,51,47,.06); }
+      .nav-links.open { display: grid; gap: 0; }
+      .nav-links a { padding: 13px 0; border-bottom: 1px solid var(--line); font-size: 13px; }
+      .nav-links a:last-child { border-bottom: 0; }
+      .hero { padding: 32px 0 47px; }
+      .hero-grid { display: flex; flex-direction: column; align-items: stretch; gap: 10px; }
+      .hero-copy { padding: 10px 0 0; }
+      .hero h1 { max-width: 500px; margin: 15px 0 17px; font-size: clamp(48px, 13vw, 68px); }
+      .hero-lead { font-size: 14px; }
+      .hero-actions { margin-top: 23px; }
+      .hero-meta { margin-top: 24px; gap: 11px; font-size: 9px; }
+      .hero-visual { min-height: 345px; margin: 4px 12px 0; }
+      .photo-placeholder { width: min(76%, 330px); aspect-ratio: .98; }
+      .float-card { right: -4px; top: 18%; padding: 11px 13px; }
+      .float-card strong { font-size: 15px; }
+      .float-card span { font-size: 9px; }
+      .hero-index { left: -7px; bottom: 10%; font-size: 8px; }
+      .trust-grid { min-height: 84px; }
+      .trust-item { justify-content: center; gap: 8px; padding: 0 8px; }
+      .trust-item svg { width: 18px; height: 18px; }
+      .trust-item strong { font-size: 14px; }
+      .trust-item span { font-size: 9px; }
+      .instagram-heading { align-items: flex-start; flex-direction: column; }
+      .instagram-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+      .section { padding: 72px 0; }
+      .section-head { margin-bottom: 28px; }
+      .section-head h2 { font-size: 41px; }
+      .section-head p { font-size: 13px; }
+      .services-grid { grid-template-columns: 1fr 1fr; gap: 10px; }
+      .service-card { min-height: 220px; padding: 21px 17px 19px; }
+      .service-card h3 { margin-top: 18px; font-size: 20px; }
+      .service-card p { font-size: 11px; }
+      .price-layout, .booking-grid, .contact-grid, .about-grid { grid-template-columns: 1fr; gap: 35px; }
+      .price-layout .section-head { position: static; }
+      .price-row { min-height: 68px; }
+      .price-row strong { font-size: 17px; }
+      .price-row span { font-size: 11px; }
+      .price-extra { align-items: flex-start; flex-direction: column; }
+      .about-grid { gap: 8px; }
+      .about-art { min-height: 300px; grid-row: 2; }
+      .about-orb { width: 260px; height: 260px; }
+      .about-tooth { width: 115px; }
+      .about-stamp { right: 2%; bottom: 0; padding: 14px 17px; }
+      .about-stamp strong { font-size: 25px; }
+      .about-points { gap: 14px; }
+      .booking-form { padding: 25px 19px; }
+      .form-title { font-size: 23px; }
+      .contact-grid { gap: 30px; }
+      .map-card { min-height: 310px; }
+      .footer-main { min-height: 100px; }
+    }
+    @media (max-width: 420px) {
+      .wrap { width: calc(100% - 30px); }
+      .hero h1 { font-size: 47px; }
+      .btn { padding-inline: 16px; font-size: 12px; }
+      .hero-actions .btn { flex: 1; }
+      .hero-meta { flex-wrap: wrap; }
+      .trust-item { flex-direction: column; align-items: center; text-align: center; gap: 4px; }
+      .trust-item svg { display: none; }
+      .trust-item strong { font-size: 13px; }
+      .trust-item span { font-size: 8px; }
+      .services-grid { grid-template-columns: 1fr; }
+      .service-card { min-height: 190px; }
+      .fields { grid-template-columns: 1fr; }
+      .field.full { grid-column: auto; }
+      .footer-main { align-items: flex-start; flex-direction: column; justify-content: center; padding: 22px 0; gap: 14px; }
+      .footer-bottom { flex-direction: column; gap: 9px; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { scroll-behavior: auto !important; animation-duration: .01ms !important; transition-duration: .01ms !important; }
+    }
+  </style>
+</head>
+<body>
+  <div class="topline">
+    <div class="wrap">
+      <span>Стоматология в Актобе · ежедневно 10:00–19:00</span>
+      <a class="topline-link" href="https://2gis.kz/aktobe/geo/70000001040015499" target="_blank" rel="noopener">12-й микрорайон, 20 · Открыть карту ↗</a>
+    </div>
+  </div>
+  <header>
+    <div class="wrap nav">
+      <a class="brand" href="#home" aria-label="Dental Lux — на главную">
+        <span class="brand-mark" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M7.5 3.5c-2.4 0-4 1.9-4 4.6 0 4.5 2.8 12.4 5 12.4 1.4 0 1.1-5 3.5-5s2.1 5 3.5 5c2.2 0 5-7.9 5-12.4 0-2.7-1.6-4.6-4-4.6-1.9 0-2.7 1.1-4.5 1.1S9.4 3.5 7.5 3.5Z"/></svg></span>
+        <span><span class="brand-name">Dental Lux</span><span class="brand-sub">Стоматология · Актобе</span></span>
+      </a>
+      <nav class="nav-links" id="navLinks" aria-label="Основная навигация">
+        <a href="#services">Услуги</a><a href="#prices">Цены</a><a href="#about">О клинике</a><a href="#contacts">Контакты</a><a href="https://www.instagram.com/dental_lux_aktobe/" target="_blank" rel="noopener">Instagram ↗</a>
+      </nav>
+      <a class="nav-phone" href="tel:+77020004006">+7 702 000-40-06</a>
+      <a class="btn btn-primary" href="#booking">Записаться</a>
+      <button class="menu-toggle" id="menuToggle" aria-label="Открыть меню" aria-expanded="false" aria-controls="navLinks"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero" id="home">
+      <div class="wrap hero-grid">
+        <div class="hero-copy reveal">
+          <span class="eyebrow">Улыбка начинается с заботы</span>
+          <h1>Здоровые зубы.<br><em>Спокойный</em> визит.</h1>
+          <p class="hero-lead">Стоматологическая помощь в Актобе — от профессиональной гигиены до лечения и восстановления зубов.</p>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="#booking">Записаться на приём <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 12h15m-6-6 6 6-6 6"/></svg></a>
+            <a class="btn btn-light" href="#prices">Посмотреть цены</a>
+          </div>
+          <div class="hero-meta"><span>Актобе, 12-й микрорайон</span><i class="meta-dot"></i><span>Ежедневно 10:00–19:00</span></div>
+        </div>
+        <div class="hero-visual" aria-label="Фото врача Dental Lux">
+          <span class="hero-index">DENTAL LUX · АКТОБЕ</span>
+          <div class="photo-placeholder">
+            <div class="arch"></div>
+            <svg class="hero-tooth" viewBox="0 0 220 280" fill="none" aria-hidden="true"><path d="M62 25c-27 0-46 22-46 54 0 52 34 146 60 146 17 0 14-58 34-58s17 58 34 58c26 0 60-94 60-146 0-32-19-54-46-54-23 0-31 13-48 13S85 25 62 25Z" fill="#FDFCF6" fill-opacity=".9" stroke="#fffefa" stroke-width="5"/><path d="M55 43c-14 6-21 19-22 37" stroke="#fff" stroke-opacity=".78" stroke-width="4" stroke-linecap="round"/></svg>
+          </div>
+          <div class="float-card"><span class="float-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M12 3v18M3 12h18"/><circle cx="12" cy="12" r="9"/></svg></span><div><strong>Всё для улыбки</strong><span>в одном месте</span></div></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="trust" aria-label="Информация о клинике">
+      <div class="wrap trust-grid">
+        <a class="trust-item" href="https://2gis.kz/aktobe/geo/70000001040015499" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 21s8-4 8-10V5l-8-3-8 3v6c0 6 8 10 8 10Z"/><path d="m9 12 2 2 4-4"/></svg><div><strong>Отзывы и адрес</strong><span>карточка клиники в 2ГИС</span></div></a>
+        <div class="trust-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 8v4l3 2"/><circle cx="12" cy="12" r="9"/></svg><div><strong>10:00–19:00</strong><span>ежедневно</span></div></div>
+        <div class="trust-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M20 10c0 5-8 12-8 12S4 15 4 10a8 8 0 1 1 16 0Z"/><circle cx="12" cy="10" r="2.5"/></svg><div><strong>12-й микрорайон</strong><span>Актобе, дом 20</span></div></div>
+      </div>
+    </section>
+
+    <section class="section instagram-section" id="instagram">
+      <div class="wrap">
+        <div class="instagram-heading">
+          <div class="section-head"><span class="eyebrow">Фото клиники</span><h2>Dental Lux в кадре</h2><p>Публикации клиники и фото нашей команды.</p></div>
+          <a class="btn btn-light" href="https://www.instagram.com/dental_lux_aktobe/" target="_blank" rel="noopener">Открыть Instagram ↗</a>
+        </div>
+        <div class="instagram-grid">
+          <a class="instagram-card" href="https://www.instagram.com/dental_lux_aktobe/p/DF5e2CRsU0G/" target="_blank" rel="noopener"><img src="assets/dental-lux-location.jpg" alt="Публикация Dental Lux с адресом клиники и картой"><span class="instagram-caption"><strong>Где нас найти</strong><span>Instagram ↗</span></span></a>
+          <a class="instagram-card" href="https://www.instagram.com/dental_lux_aktobe/p/DF5ezhIszaa/" target="_blank" rel="noopener"><img src="assets/dental-lux-brand.jpg" alt="Фирменная публикация стоматологии Dental Lux"><span class="instagram-caption"><strong>Dental Lux</strong><span>Instagram ↗</span></span></a>
+          <a class="instagram-card" href="#booking"><img src="assets/dental-lux-team-photo.jpeg" alt="Команда стоматологии Dental Lux на общем фото"><span class="instagram-caption"><strong>Наша команда</strong><span>Записаться ↗</span></span></a>
+        </div>
+        <p class="instagram-link-row">Ещё публикации — <a href="https://www.instagram.com/dental_lux_aktobe/" target="_blank" rel="noopener">в Instagram Dental Lux ↗</a></p>
+      </div>
+    </section>
+
+    <section class="section services-section" id="services">
+      <div class="wrap">
+        <div class="section-head"><span class="eyebrow">Услуги</span><h2>Забота о зубах<br>на каждом этапе</h2><p>Расскажите, что вас беспокоит, — администратор поможет выбрать направление и подобрать время для визита.</p></div>
+        <div class="services-grid">
+          <article class="service-card"><span class="service-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M7.5 3.5c-2.4 0-4 1.9-4 4.6 0 4.5 2.8 12.4 5 12.4 1.4 0 1.1-5 3.5-5s2.1 5 3.5 5c2.2 0 5-7.9 5-12.4 0-2.7-1.6-4.6-4-4.6-1.9 0-2.7 1.1-4.5 1.1S9.4 3.5 7.5 3.5Z"/></svg></span><h3>Профессиональная чистка</h3><p>Гигиена полости рта и удаление зубных отложений.</p><a class="service-link" href="#prices">Уточнить стоимость <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M5 12h14m-6-6 6 6-6 6"/></svg></a></article>
+          <article class="service-card"><span class="service-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 3 4 6v5c0 5 3.4 8.5 8 10 4.6-1.5 8-5 8-10V6l-8-3Z"/><path d="M8.5 12h7"/></svg></span><h3>Лечение зубов</h3><p>Лечение кариеса и другие терапевтические процедуры.</p><a class="service-link" href="#booking">Записаться <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M5 12h14m-6-6 6 6-6 6"/></svg></a></article>
+          <article class="service-card"><span class="service-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 3v18M5 8h14M7 8l-3 6h6L7 8Zm10 0-3 6h6l-3-6Z"/></svg></span><h3>Хирургия</h3><p>Консультация стоматолога-хирурга и хирургическая помощь.</p><a class="service-link" href="#booking">Записаться <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M5 12h14m-6-6 6 6-6 6"/></svg></a></article>
+          <article class="service-card"><span class="service-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 19h16M6 16l2-9h8l2 9M9 7V4h6v3"/><path d="M9 12h6"/></svg></span><h3>Протезирование</h3><p>Восстановление формы и функции зубов с учётом вашей ситуации.</p><a class="service-link" href="#booking">Записаться <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M5 12h14m-6-6 6 6-6 6"/></svg></a></article>
+          <article class="service-card"><span class="service-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 5h16M6 5v4a6 6 0 0 0 12 0V5M12 15v5M8 20h8"/><path d="M9 8h6"/></svg></span><h3>Ортодонтия</h3><p>Консультация по исправлению прикуса и положению зубов.</p><a class="service-link" href="#booking">Записаться <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M5 12h14m-6-6 6 6-6 6"/></svg></a></article>
+          <article class="service-card"><span class="service-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 3c2 3 6 6 6 11a6 6 0 0 1-12 0c0-3 2-6 6-11Z"/><path d="M9 15c.3 1.2 1.2 2 2.5 2"/></svg></span><h3>Эстетическая стоматология</h3><p>Процедуры для красивой и ухоженной улыбки.</p><a class="service-link" href="#booking">Узнать подробнее <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M5 12h14m-6-6 6 6-6 6"/></svg></a></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section price-section" id="prices">
+      <div class="wrap price-layout">
+        <div class="section-head"><span class="eyebrow">Цены</span><h2>Стоимость —<br>до визита</h2><p>Ориентировочные диапазоны цен на основные услуги клиники.</p><div class="price-note">Цены из переданного вами прайса. Итоговую стоимость врач уточнит после осмотра. Цену профессиональной чистки можно узнать у администратора.</div></div>
+        <div>
+          <div class="price-list">
+            <div class="price-row"><div class="price-item"><small>Гигиена</small><strong>Профессиональная чистка зубов</strong></div><span>уточните цену</span></div>
+            <div class="price-row"><div class="price-item"><small>Терапия</small><strong>Лечение зуба</strong></div><span>10 000–40 000 ₸</span></div>
+            <div class="price-row"><div class="price-item"><small>Хирургия</small><strong>Удаление зуба</strong></div><span>3 000–10 000 ₸</span></div>
+            <div class="price-row"><div class="price-item"><small>Хирургия</small><strong>Удаление зуба мудрости</strong></div><span>15 000–25 000 ₸</span></div>
+            <div class="price-row"><div class="price-item"><small>Ортодонтия</small><strong>Брекет-система</strong></div><span>50 000–300 000 ₸</span></div>
+            <div class="price-row"><div class="price-item"><small>Ортопедия</small><strong>Протезирование</strong></div><span>25 000–100 000 ₸</span></div>
+          </div>
+          <div class="price-extra"><p>Администратор сориентирует по стоимости и подскажет, что взять с собой на приём.</p><a class="btn btn-primary" href="https://wa.me/77020004006?text=%D0%97%D0%B4%D1%80%D0%B0%D0%B2%D1%81%D1%82%D0%B2%D1%83%D0%B9%D1%82%D0%B5!%20%D0%A5%D0%BE%D1%87%D1%83%20%D1%83%D1%82%D0%BE%D1%87%D0%BD%D0%B8%D1%82%D1%8C%20%D1%86%D0%B5%D0%BD%D1%83%20%D0%BD%D0%B0%20%D1%87%D0%B8%D1%81%D1%82%D0%BA%D1%83%20%D0%B7%D1%83%D0%B1%D0%BE%D0%B2" target="_blank" rel="noopener">Уточнить в WhatsApp <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 12h15m-6-6 6 6-6 6"/></svg></a></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section about-section" id="about">
+      <div class="wrap about-grid">
+        <div class="about-art" aria-hidden="true"><div class="about-orb"></div><svg class="about-tooth" viewBox="0 0 220 280" fill="none"><path d="M62 25c-27 0-46 22-46 54 0 52 34 146 60 146 17 0 14-58 34-58s17 58 34 58c26 0 60-94 60-146 0-32-19-54-46-54-23 0-31 13-48 13S85 25 62 25Z" stroke="currentColor" stroke-width="2"/><path d="M55 43c-14 6-21 19-22 37" stroke="currentColor" stroke-opacity=".55" stroke-width="2" stroke-linecap="round"/></svg><div class="about-stamp"><strong>Dental<br>Lux</strong><span>Стоматология в Актобе</span></div></div>
+        <div class="about-copy"><span class="eyebrow">О клинике</span><h2>Внимание к деталям. Уважение к вам.</h2><p>Dental Lux — стоматологическая клиника в 12-м микрорайоне Актобе. Здесь можно получить консультацию и подобрать подходящий план лечения.</p><div class="about-points"><div class="about-point"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m5 12 4 4L19 6"/></svg><span>Несколько направлений стоматологической помощи</span></div><div class="about-point"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m5 12 4 4L19 6"/></svg><span>Удобная запись по телефону и в WhatsApp</span></div><div class="about-point"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m5 12 4 4L19 6"/></svg><span>Расположение рядом с жилыми кварталами</span></div><div class="about-point"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m5 12 4 4L19 6"/></svg><span>Можно заранее уточнить цену процедуры</span></div></div></div>
+      </div>
+    </section>
+
+    <section class="section booking-section" id="booking">
+      <div class="wrap booking-grid">
+        <div class="booking-copy"><span class="eyebrow">Запись на приём</span><h2>Подберём удобное время</h2><p>Оставьте заявку — WhatsApp откроется с готовым сообщением для администратора. Время визита подтвердят ответом.</p><div class="booking-steps"><div class="step"><span class="step-num">01</span><span>Укажите имя и номер телефона</span></div><div class="step"><span class="step-num">02</span><span>Отправьте заявку в WhatsApp</span></div><div class="step"><span class="step-num">03</span><span>Дождитесь подтверждения записи</span></div></div></div>
+        <form class="booking-form" id="bookingForm">
+          <h3 class="form-title">Заявка на приём</h3>
+          <div class="fields">
+            <div class="field"><label for="name">Ваше имя</label><input id="name" name="name" autocomplete="name" placeholder="Как к вам обращаться?" required></div>
+            <div class="field"><label for="phone">Номер телефона</label><input id="phone" name="phone" type="tel" autocomplete="tel" placeholder="+7 ___ ___ __ __" required></div>
+            <div class="field full"><label for="note">Комментарий (необязательно)</label><textarea id="note" name="note" placeholder="Удобное время или вопрос"></textarea></div>
+          </div>
+          <button class="btn btn-primary form-submit" type="submit">Продолжить в WhatsApp <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 12h15m-6-6 6 6-6 6"/></svg></button>
+          <p class="form-hint">Нажимая кнопку, вы перейдёте в WhatsApp, чтобы отправить заявку клинике.</p>
+        </form>
+      </div>
+    </section>
+
+    <section class="section contact-section" id="contacts">
+      <div class="wrap contact-grid">
+        <div class="contact-copy"><span class="eyebrow">Контакты</span><h2>Будем рады<br>вашему визиту</h2>
+          <div class="contact-list">
+            <div class="contact-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M20 10c0 5-8 12-8 12S4 15 4 10a8 8 0 1 1 16 0Z"/><circle cx="12" cy="10" r="2.5"/></svg><div><span>Адрес</span><strong>Актобе, 12-й микрорайон, 20</strong></div></div>
+            <div class="contact-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M21 16.5v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.4 19.4 0 0 1-6-6A19.8 19.8 0 0 1 1.1 3.7 2 2 0 0 1 3.1 1.5h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L7 9.4a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.5c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.8 2.2Z" transform="translate(1 1) scale(.92)"/></svg><div><span>Телефон</span><a href="tel:+77020004006">+7 702 000-40-06</a></div></div>
+            <div class="contact-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg><div><span>График работы</span><strong>Ежедневно, 10:00–19:00</strong></div></div>
+          </div>
+          <div class="contact-actions"><a class="btn btn-primary" href="tel:+77020004006">Позвонить</a><a class="btn btn-light" href="https://wa.me/77020004006" target="_blank" rel="noopener">Написать в WhatsApp</a></div>
+        </div>
+        <div class="map-card" aria-label="Расположение клиники в Актобе">
+          <div class="map-lines"></div><div class="map-block one"></div><div class="map-block two"></div><div class="map-block three"></div>
+          <div class="map-pin"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M20 10c0 5-8 12-8 12S4 15 4 10a8 8 0 1 1 16 0Z"/><circle cx="12" cy="10" r="2.5"/></svg></div>
+          <div class="map-label">Dental Lux<small>12-й микрорайон, 20</small></div>
+          <a class="btn btn-primary map-open" href="https://2gis.kz/aktobe/geo/70000001040015499" target="_blank" rel="noopener">Открыть в 2ГИС ↗</a>
+        </div>
+      </div>
+    </section>
+  </main>
+  <footer>
+    <div class="wrap footer-main">
+      <a class="brand footer-brand" href="#home"><span class="brand-mark" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M7.5 3.5c-2.4 0-4 1.9-4 4.6 0 4.5 2.8 12.4 5 12.4 1.4 0 1.1-5 3.5-5s2.1 5 3.5 5c2.2 0 5-7.9 5-12.4 0-2.7-1.6-4.6-4-4.6-1.9 0-2.7 1.1-4.5 1.1S9.4 3.5 7.5 3.5Z"/></svg></span><span><span class="brand-name">Dental Lux</span><span class="brand-sub">Стоматология · Актобе</span></span></a>
+      <span class="footer-note">Актобе, 12-й микрорайон, 20</span><a class="footer-note" href="tel:+77020004006">+7 702 000-40-06</a><a class="footer-note" href="https://www.instagram.com/dental_lux_aktobe/" target="_blank" rel="noopener">Instagram ↗</a>
+    </div>
+    <div class="wrap footer-bottom"><span>© <span id="year">2026</span> Dental Lux</span><a href="https://2gis.kz/aktobe/geo/70000001040015499" target="_blank" rel="noopener">Открыть карточку клиники в 2ГИС ↗</a></div>
+  </footer>
+
+  <script>
+    const menuToggle = document.getElementById('menuToggle');
+    const navLinks = document.getElementById('navLinks');
+    menuToggle.addEventListener('click', () => {
+      const isOpen = navLinks.classList.toggle('open');
+      menuToggle.setAttribute('aria-expanded', String(isOpen));
+      menuToggle.setAttribute('aria-label', isOpen ? 'Закрыть меню' : 'Открыть меню');
+    });
+    navLinks.querySelectorAll('a').forEach(link => link.addEventListener('click', () => {
+      navLinks.classList.remove('open');
+      menuToggle.setAttribute('aria-expanded', 'false');
+    }));
+    document.getElementById('year').textContent = new Date().getFullYear();
+    document.getElementById('bookingForm').addEventListener('submit', event => {
+      event.preventDefault();
+      const form = new FormData(event.currentTarget);
+      const lines = [
+        'Здравствуйте! Хочу записаться в Dental Lux.',
+        `Имя: ${form.get('name')}`,
+        `Телефон: ${form.get('phone')}`,
+        form.get('note') ? `Комментарий: ${form.get('note')}` : ''
+      ].filter(Boolean);
+      window.open(`https://wa.me/77020004006?text=${encodeURIComponent(lines.join('\n'))}`, '_blank', 'noopener');
+    });
+  </script>
+</body>
+</html>
