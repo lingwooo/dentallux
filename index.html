@@ -49,8 +49,8 @@
     .brand { display: inline-flex; align-items: center; gap: 11px; flex: 0 0 auto; }
     .brand-mark { width: 38px; height: 38px; display: grid; place-items: center; color: var(--green); border: 1px solid #c5d2c6; border-radius: 50%; }
     .brand-mark svg { width: 21px; height: 21px; }
-    .brand-name { font: 600 18px/1 var(--serif); letter-spacing: .03em; }
-    .brand-sub { color: var(--muted); font-size: 9px; letter-spacing: .17em; margin-top: 5px; text-transform: uppercase; }
+    .brand-name { display: block; font: 600 18px/1 var(--serif); letter-spacing: .03em; }
+    .brand-sub { display: block; color: var(--muted); font-size: 9px; letter-spacing: .17em; margin-top: 5px; text-transform: uppercase; }
     .nav-links { display: flex; align-items: center; gap: clamp(18px, 3vw, 38px); margin-left: auto; }
     .nav-links a { color: #52615a; font-size: 12px; transition: color .2s ease; }
     .nav-links a:hover { color: var(--green); }
@@ -189,7 +189,7 @@
     footer { background: #173e36; color: #e6ebe2; }
     .footer-main { min-height: 112px; display: flex; align-items: center; justify-content: space-between; gap: 24px; }
     .footer-brand .brand-mark { border-color: rgba(230,235,226,.3); color: #e6ebe2; }
-    .footer-brand .brand-sub { color: #b7c4b8; }
+    .footer-brand .brand-sub { display: block; color: #b7c4b8; }
     .footer-note { color: #b7c4b8; font-size: 11px; }
     .footer-bottom { padding: 16px 0 20px; border-top: 1px solid rgba(230,235,226,.16); display: flex; justify-content: space-between; gap: 20px; color: #aab9ac; font-size: 10px; }
     .footer-bottom a:hover { color: white; }
@@ -310,7 +310,6 @@
     <section class="hero" id="home">
       <div class="wrap hero-grid">
         <div class="hero-copy reveal">
-          <span class="eyebrow">Улыбка начинается с заботы</span>
           <h1>Здоровые зубы.<br><em>Спокойный</em> визит.</h1>
           <p class="hero-lead">Стоматологическая помощь в Актобе — от профессиональной гигиены до лечения и восстановления зубов.</p>
           <div class="hero-actions">
